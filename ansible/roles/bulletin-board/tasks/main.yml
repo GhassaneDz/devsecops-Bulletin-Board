@@ -66,30 +66,28 @@
 # docker network
 - name: Create docker network to interconnect containers
   docker_network:
-    name: battleboat
+    name: bb-net
   tags:
     - preprod
     - prod
 
-# deploy application
+# deploy db application
 - name: Deploy database
   docker_container:
-    name: "db-battleboat"
-    hostname: "db-battleboat"
-    image: "mysql:5.7"
+    name: "db-bulletin-board"
+    hostname: "db-bulletin-board"
+    image: "{{ docker_hub_login }}/bulletin-board-db:lasted"
     state: "started"
     restart_policy: "always"
     volumes:
-      - "{{ volume_database }}:/var/lib/mysql"
+      - "{{ volume_database }}:/var/lib/mssql"
     env:
-      MYSQL_ROOT_PASSWORD: "root-julo"
-      MYSQL_DATABASE: "battleboat"
-      MYSQL_USER: "battleuser"
-      MYSQL_PASSWORD: "battlepass"
+      ACCEPT_EULA=Y \
+      MSSQL_SA_PASSWORD=D0cker2*2*
     networks:
-      - name: "battleboat"
+      - name: "bb-net"
     ports:
-      - "3306:3306"
+      - "1433:1433"
   tags:
     - preprod
     - prod
@@ -98,23 +96,17 @@
 
 - name: Deploy frontend
   docker_container:
-    name: "battle-julo"
-    hostname: "battle-julo"
-    image: "{{ docker_hub_login }}/fake-backend:{{ fake_backend_image_tag }}"
+    name: "app-bulletin-board"
+    hostname: "app-bulletin-board"
+    image: "{{ docker_hub_login }}/bulletin-board-app:{{ bulletin_board_image_tag }}"
     state: "started"
     restart_policy: "always"
     networks:
-      - name: "battleboat"
+      - name: "bb-net"
     volumes:
-      - "{{ home }}/application-battleboat/battleboat:/etc/backend/static"
-    env:
-      DATABASE_HOST: "db-battleboat"
-      DATABASE_PORT: "3306"
-      DATABASE_USER: "battleuser"
-      DATABASE_PASSWORD: "battlepass"
-      DATABASE_NAME: "battleboat"
+      - "{{ home }}/application-bulletin-board/bulletin-board-app:/etc/backend/static"
     ports:
-      - "80:3000"
+      - "8080:8080"
   tags:
     - preprod
     - prod
