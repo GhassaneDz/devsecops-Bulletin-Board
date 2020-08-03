@@ -1,13 +1,13 @@
 ---
 
-fake_backend_source_repo: "git@github.com:juliencoste/fake-backend.git"
+fake_backend_source_repo: "git@github.com:juliencoste/devsecops-Bulletin-Board.git"
 fake_backend_source_branch: "master"
 fake_backend_image_tag: "CICD"
 
 home: "/home/centos"
 volume_database: "/db-data"
-ip_addr_preprod: "54.160.112.136"
-ip_addr_prod: "52.86.186.195"
+ip_addr_preprod: "54.198.93.188"
+ip_addr_prod: "54.147.252.99"
 port_app: "80"
 
 #secret data vaulted
