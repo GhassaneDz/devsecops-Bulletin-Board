@@ -1,8 +1,8 @@
 ---
 
-fake_backend_source_repo: "git@github.com:juliencoste/devsecops-Bulletin-Board.git"
-fake_backend_source_branch: "master"
-fake_backend_image_tag: "CICD"
+bulletin_board_source_repo: "git@github.com:juliencoste/devsecops-Bulletin-Board.git"
+bulletin_board_source_branch: "master"
+bulletin_board_image_tag: "CICD"
 
 home: "/home/centos"
 volume_database: "/db-data"
