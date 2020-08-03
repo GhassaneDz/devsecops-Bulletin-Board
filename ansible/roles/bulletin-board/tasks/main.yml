@@ -1,5 +1,5 @@
 ---
-# This playbook is used to deploy fake-backend application based on Docker
+# This playbook is used to deploy bulletin-board application based on Docker
 
 # build and push builded images
 
@@ -15,7 +15,7 @@
 
 - name: create project directory
   file:
-    path: "{{ home }}/application-battleboat"
+    path: "{{ home }}/application-bulletin-board"
     state: directory
   tags:
     - build
@@ -32,15 +32,15 @@
     - preprod
     - prod
 
-- name: Retrieve fakebackend addons source code
+- name: Retrieve bulletin-board addons source code
   git:
-    repo: "{{ fake_backend_source_repo }}"
-    dest: "{{ home }}/application-battleboat"
+    repo: "{{ bulletin_board_source_repo }}"
+    dest: "{{ home }}/application-bulletin-board"
     accept_hostkey: yes
     force: yes
     recursive: no
     key_file: "{{ home }}/.ssh/id_rsa"
-    version: "{{ fake_backend_source_branch }}"
+    version: "{{ bulletin_board_source_branch }}"
   tags:
     - build
     - preprod
@@ -48,10 +48,10 @@
 
 - name: Build image and push it to Docker Hub
   docker_image:
-    path: "{{ home }}/application-battleboat"
-    name: "{{ docker_hub_login }}/fake-backend"
+    path: "{{ home }}/application-bulletin-board"
+    name: "{{ docker_hub_login }}/bulletin-board"
     push: yes
-    tag: "{{ fake_backend_image_tag }}"
+    tag: "{{ bulletin_board_image_tag }}"
   tags:
     - build
 
