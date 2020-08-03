@@ -8,7 +8,7 @@ home: "/home/centos"
 volume_database: "/db-data"
 ip_addr_preprod: "54.198.93.188"
 ip_addr_prod: "54.147.252.99"
-port_app: "80"
+port_app: "8080"
 
 #secret data vaulted
 github_private_key: "{{ vault_github_private_key }}"
