@@ -33,7 +33,7 @@ pipeline {
                 DEVOPSKEY = credentials('devopskey')
             }
             steps {
-                sh 'echo \$VAULTKEY > vault.key'
+                sh 'echo \$VAULTKEY > ansible/vault.key'
                 sh 'cp \$DEVOPSKEY ansible/id_rsa'
                 sh 'chmod 600 ansible/id_rsa'
             }
