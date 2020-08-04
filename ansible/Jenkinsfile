@@ -48,12 +48,13 @@ pipeline {
                }
                stage("Ping targeted hosts") {
                    steps {
+                       sh 'cd ansible'
                        sh 'ansible all -m ping -i hosts --private-key id_rsa'
                    }
                }
                stage("Verify ansible playbook syntax") {
                    steps {
-                       sh 'ansible-lint -x 306 install-bulletin-board.yml'
+                       sh 'ansible-lint -x 306 ansible/install-bulletin-board.yml'
                        sh 'echo "${GIT_BRANCH}"'
                    }
                }
