@@ -34,8 +34,8 @@ pipeline {
             }
             steps {
                 sh 'echo \$VAULTKEY > vault.key'
-                sh 'cp \$DEVOPSKEY id_rsa'
-                sh 'chmod 600 id_rsa'
+                sh 'cp \$DEVOPSKEY ansible/id_rsa'
+                sh 'chmod 600 ansible/id_rsa'
             }
         }
         stage('Test and deploy the application in preproduction') {
