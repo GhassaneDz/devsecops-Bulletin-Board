@@ -14,7 +14,7 @@ pipeline {
             agent { docker { image 'sdesbure/yamllint' } }
             steps {
                 sh 'yamllint --version'
-                sh 'yamllint \${WORKSPACE}\ansible'
+                sh 'yamllint \${WORKSPACE}/ansible'
             }
         }
         stage('Check markdown syntax') {
