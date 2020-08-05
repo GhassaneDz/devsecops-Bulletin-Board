@@ -10,10 +10,8 @@
     
   vars:
     pip_install_packages:
-      - name: docker
-      
+      - name: docker      
     pip_package: python-pip
-    
     pip_executable: pip
     
   pre_tasks:
