@@ -23,7 +23,7 @@
         register: _result1
         until: _result1.status == 200
         retries: 15
-        delay: 5*/
+        delay: 5 */
       tags:
        - preprod
 
@@ -43,6 +43,6 @@
         register: _result3
         until: _result3.status == 200
         retries: 15
-        delay: 5*/
+        delay: 5 */
       tags:
         - prod
