@@ -76,7 +76,7 @@
   docker_container:
     name: "db-bulletin-board"
     hostname: "db-bulletin-board"
-    image: "{{ docker_hub_login }}/bulletin-board-db"
+    image: "{{ docker_hub_login }}/bulletin-board-db:v2"
     state: "started"
     restart_policy: "always"
     volumes:
