@@ -48,7 +48,7 @@
 
 - name: Build image and push it to Docker Hub
   docker_image:
-    path: "{{ home }}/application-bulletin-board"
+    path: "{{ home }}/application-bulletin-board/bulletin-board-app"
     name: "{{ docker_hub_login }}/bulletin-board"
     push: yes
     tag: "{{ bulletin_board_image_tag }}"
