@@ -49,7 +49,7 @@
 - name: Build image and push it to Docker Hub
   docker_image:
     path: "{{ home }}/application-bulletin-board/bulletin-board-app"
-    name: "{{ docker_hub_login }}/bulletin-board"
+    name: "{{ docker_hub_login }}/bulletin-board-app"
     push: yes
     tag: "{{ bulletin_board_image_tag }}"
   tags:
