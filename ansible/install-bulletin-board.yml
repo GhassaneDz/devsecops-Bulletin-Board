@@ -5,7 +5,6 @@
   become: true
   vars_files:
     - "files/secrets/devops.yml"
-    - "vars/main.yml"
   vars:
     pip_install_packages:
       - name: docker
