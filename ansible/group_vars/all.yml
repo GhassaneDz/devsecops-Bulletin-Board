@@ -6,8 +6,8 @@ bulletin_board_image_tag: "CICD"
 
 home: "/home/centos"
 volume_database: "/db-data"
-ip_addr_preprod: "54.198.93.188"
-ip_addr_prod: "54.147.252.99"
+ip_addr_preprod: "34.239.201.78"
+ip_addr_prod: "52.203.191.113"
 port_app: "8080"
 
 #secret data vaulted
