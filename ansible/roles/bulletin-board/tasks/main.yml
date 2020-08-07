@@ -74,13 +74,13 @@
 # deploy db application
 - name: Deploy database
   docker_container:
-    name: "db-bulletin-board"
+    name: "bb-db"
     hostname: "db-bulletin-board"
     image: "{{ docker_hub_login }}/bulletin-board-db:v2"
     state: "started"
     restart_policy: "always"
     volumes:
-      - "{{ volume_database }}:/var/lib/mssql"
+      - "{{ volume_database }}:/data/mssql"
     env:
       ACCEPT_EULA=Y \
       MSSQL_SA_PASSWORD=D0cker2*2*
@@ -96,7 +96,7 @@
 
 - name: Deploy frontend
   docker_container:
-    name: "app-bulletin-board"
+    name: "bb-app"
     hostname: "app-bulletin-board"
     image: "{{ docker_hub_login }}/bulletin-board-app:{{ bulletin_board_image_tag }}"
     state: "started"
@@ -104,9 +104,9 @@
     networks:
       - name: "bb-net"
     volumes:
-      - "{{ home }}/application-bulletin-board/bulletin-board-app:/etc/backend/static"
+      - "{{ home }}/application-bulletin-board/bulletin-board-app:/etc/data/static"
     ports:
-      - "8181:8181"
+      - "8080:8080"
   tags:
     - preprod
     - prod
