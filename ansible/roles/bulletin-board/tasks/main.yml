@@ -106,7 +106,7 @@
     volumes:
       - "{{ home }}/application-bulletin-board/bulletin-board-app:/etc/backend/static"
     ports:
-      - "8181:8181"
+      - "8080:8080"
   tags:
     - preprod
     - prod
