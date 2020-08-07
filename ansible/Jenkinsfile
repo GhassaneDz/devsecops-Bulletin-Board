@@ -61,7 +61,7 @@ pipeline {
               
                stage("Build docker images on build host") {
                    when {
-                      expression { GIT_BRANCH == 'origin/dev2' }
+                      expression { GIT_BRANCH == 'origin/dev' }
                    }
                    steps {
                        sh 'ansible-playbook  -i ansible/hosts --vault-password-file ansible/vault.key --private-key ansible/id_rsa --tags "build" --limit build ansible/install-bulletin-board.yml'
@@ -70,7 +70,7 @@ pipeline {
 
                stage("Deploy application in preproduction") {
                   when {
-                      expression { GIT_BRANCH == 'origin/dev2' }
+                      expression { GIT_BRANCH == 'origin/dev' }
                   }
                    steps {
                        sh 'ansible-playbook  -i ansible/hosts --vault-password-file ansible/vault.key --private-key ansible/id_rsa --tags "preprod" --limit preprod ansible/install-bulletin-board.yml'
@@ -79,7 +79,7 @@ pipeline {
 
                stage("Ensure application is deployed in preproduction") {
                   when {
-                      expression { GIT_BRANCH == 'origin/dev2' }
+                      expression { GIT_BRANCH == 'origin/dev' }
                   }
                   steps {
                       sh 'ansible-playbook  -i ansible/hosts --vault-password-file ansible/vault.key --tags "preprod" ansible/check_deploy_app.yml'
