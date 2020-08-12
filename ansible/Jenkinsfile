@@ -38,7 +38,7 @@ pipeline {
                 sh 'chmod 600 ansible/id_rsa'
             }
         }
-        stage('Test and deploy the application in preproduction') {
+        stage('instalation requirement ansible') {
              agent { docker { image 'registry.gitlab.com/robconnolly/docker-ansible:latest' } }
              stages {
                stage("Install ansible role dependencies") {
@@ -68,6 +68,23 @@ pipeline {
                    }
                }
 
+               stage("Scan docker images on build host") {
+                   when {
+                      expression { GIT_BRANCH == 'origin/dev' }
+                  }
+                   steps {
+                       sh 'ansible-playbook  -i ansible/hosts --vault-password-file ansible/vault.key --private-key ansible/id_rsa ansible/clair-scan.yml'
+                   }
+               }
+               stage("Push docker images from build host") {
+                   when {
+                      expression { GIT_BRANCH == 'origin/dev' }
+                  }
+                   steps {
+                       sh 'ansible-playbook  -i ansible/hosts --vault-password-file ansible/vault.key --private-key ansible/id_rsa --tags "push" --limit build ansible/install-bulletin-board.yml'
+                   }
+               }
+
                stage("Deploy application in preproduction") {
                   when {
                       expression { GIT_BRANCH == 'origin/dev' }
@@ -87,7 +104,18 @@ pipeline {
                 } 
              }
           }
-        stage('Test and deploy the application in production') {
+          stage('Find xss vulnerability') {
+              agent { docker { 
+                    image 'gauntlt/gauntlt' 
+                    args '--entrypoint='
+                    } }
+              steps {
+                  sh 'gauntlt --version'
+                  sh 'gauntlt xss.attack'
+              }
+          }
+
+        stage('instalation requirement ansible') {
             agent { docker { image 'registry.gitlab.com/robconnolly/docker-ansible:latest' } }
             stages {
                stage("Install ansible role dependencies") {
