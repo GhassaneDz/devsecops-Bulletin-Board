@@ -2,8 +2,8 @@
   hosts: build 
   become: true 
   vars:
-    image_to_scan: "dirane/student-list-api"  #container to scan for vulnerabilities
-    image_tag: v1
+    image_to_scan: "dockjulien/bulletin-board"  #container to scan for vulnerabilities
+    image_tag: CICD
     clair_server: "172.17.0.1"  #clair server api endpoint
   pre_tasks: 
     - name: setting up clair-db
