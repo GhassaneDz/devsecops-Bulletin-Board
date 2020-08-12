@@ -38,7 +38,7 @@ pipeline {
                 sh 'chmod 600 ansible/id_rsa'
             }
         }
-        stage('instalation requirement ansible') {
+        stage('install requirement ansible') {
              agent { docker { image 'registry.gitlab.com/robconnolly/docker-ansible:latest' } }
              stages {
                stage("Install ansible role dependencies") {
@@ -115,7 +115,7 @@ pipeline {
               }
           }
 
-        stage('instalation requirement ansible') {
+        stage('install requirement ansible') {
             agent { docker { image 'registry.gitlab.com/robconnolly/docker-ansible:latest' } }
             stages {
                stage("Install ansible role dependencies") {
