@@ -10,7 +10,7 @@ Feature: simple nmap attack (sanity check)
   Scenario: Verify server is available on standard web ports
     When I launch an "nmap" attack with:
       """
-      nmap -Pn 80,8080 <hostname>
+      nmap -p 80,8080 <hostname>
       """
     Then the output should match /80.tcp\s+open/
     And the output should not match:
