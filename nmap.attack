@@ -12,7 +12,7 @@ Feature: OS detection
       """
       nmap -sV -p80 -PN <hostname>
       """
-    Then the output should contain:
+    Then the output should not contain:
       """
       Apache
       """
