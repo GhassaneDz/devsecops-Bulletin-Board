@@ -104,7 +104,7 @@ pipeline {
                 } 
              }
           }
-          stage('Find xss vulnerability') {
+          stage('Find xss vulnerability preprod') {
               agent { docker { 
                     image 'gauntlt/gauntlt' 
                     args '--entrypoint='
@@ -162,7 +162,7 @@ pipeline {
                }
             }
          }
-         stage('Find xss vulnerability') {
+         stage('Find xss vulnerability prod') {
              agent { docker { 
                    image 'gauntlt/gauntlt' 
                    args '--entrypoint='
