@@ -5,7 +5,7 @@ Feature: simple nmap attack (sanity check)
     Given "nmap" is installed
     And the following profile:
       | name     | value      |
-      | hostname | http://ec2-34-239-201-78.compute-1.amazonaws.com |
+      | hostname | 34.239.201.78 |
 
   Scenario: Verify server is available on standard web ports
     When I launch an "nmap" attack with:
