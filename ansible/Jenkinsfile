@@ -165,7 +165,7 @@ pipeline {
                       expression { GIT_BRANCH == 'origin/master' }
                   }
                    steps {
-                       sh 'ansible-playbook  -i ansible/hosts --vault-password-file ansible/vault.key --private-key ansible/id_rsa --tags "prod" --limit prod install-bulletin-board.yml'
+                       sh 'ansible-playbook  -i ansible/hosts --vault-password-file ansible/vault.key --private-key ansible/id_rsa --tags "prod" --limit prod ansible/install-bulletin-board.yml'
                    }
                }
                stage("Ensure application is deployed in production") {
