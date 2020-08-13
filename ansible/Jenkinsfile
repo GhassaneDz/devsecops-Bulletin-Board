@@ -117,7 +117,7 @@ pipeline {
                   sh 'gauntlt xss.attack'
               }
           }
-          stage('Find curl vulnerability preprod') {
+          stage('Find nmap vulnerability preprod') {
               agent { docker { 
                     image 'gauntlt/gauntlt' 
                     args '--entrypoint='
@@ -127,7 +127,7 @@ pipeline {
                   }
               steps {
                   sh 'gauntlt --version'
-                  sh 'gauntlt curl.attack'
+                  sh 'gauntlt nmap.attack'
               }
           }
         
