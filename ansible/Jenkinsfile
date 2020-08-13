@@ -21,9 +21,9 @@ pipeline {
             agent { docker { image 'ruby:alpine' } }
             steps {
                 sh 'apk --no-cache add git'
-                sh 'gem install mdl'
+                sh 'gem install mdl -v 0.9.0'
                 sh 'mdl --version'
-                sh 'mdl --style all --git-recurse \${WORKSPACE}'
+                sh 'mdl --style all --warnings --git-recurse \${WORKSPACE}'
             }
         }
         stage('Prepare ansible environment') {
