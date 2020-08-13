@@ -109,6 +109,9 @@ pipeline {
                     image 'gauntlt/gauntlt' 
                     args '--entrypoint='
                     } }
+              when {
+                      expression { GIT_BRANCH == 'origin/dev2' }
+                  }
               steps {
                   sh 'gauntlt --version'
                   sh 'gauntlt xss.attack'
@@ -167,6 +170,9 @@ pipeline {
                    image 'gauntlt/gauntlt' 
                    args '--entrypoint='
                    } }
+             when {
+                      expression { GIT_BRANCH == 'origin/master' }
+                  }
              steps {
                  sh 'gauntlt --version'
                  sh 'gauntlt xss.attack'
