@@ -117,7 +117,20 @@ pipeline {
                   sh 'gauntlt xss.attack'
               }
           }
-
+          stage('Find curl vulnerability preprod') {
+              agent { docker { 
+                    image 'gauntlt/gauntlt' 
+                    args '--entrypoint='
+                    } }
+              when {
+                      expression { GIT_BRANCH == 'origin/dev2' }
+                  }
+              steps {
+                  sh 'gauntlt --version'
+                  sh 'gauntlt curl.attack'
+              }
+          }
+        
         stage('instalation requirement ansible') {
             agent { docker { image 'registry.gitlab.com/robconnolly/docker-ansible:latest' } }
             stages {
