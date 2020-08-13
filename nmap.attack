@@ -13,7 +13,4 @@ Feature: simple nmap attack (sanity check)
       nmap -Pn <hostname>
       """
     Then the output should match /8080.tcp\s+open/
-    And the output should not match:
-      """
-      80/tcp\s+open
       """
