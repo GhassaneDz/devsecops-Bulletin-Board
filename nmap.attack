@@ -1,16 +1,18 @@
-@slow
-Feature: simple nmap attack (sanity check)
-
+@slow @announce
+Feature: nmap attacks for example.com
   Background:
     Given "nmap" is installed
     And the following profile:
-      | name     | value      |
-      | hostname | 34.239.201.78 |
+      | name           | value           |
+      | hostname       | 34.239.201.78 |
+      | tcp_ping_ports | 22,25,80,443    |
 
-  Scenario: Verify server is available on standard web ports
+  Scenario: Using tcp syn ping scan and the nmap fast flag
     When I launch an "nmap" attack with:
       """
-      nmap -Pn <hostname>
+      nmap -F -PS<tcp_ping_ports> <hostname> -oX foo.xml
       """
-    Then the output should match /8080.tcp\s+open/
-      """
+    Then the file "foo.xml" should contain XML:
+      | css                                                         |
+      | ports port[protocol="tcp"][portid="80"] state[state="open"] |
+      | ports port[protocol="tcp"][portid="22"] state[state="open"] |
