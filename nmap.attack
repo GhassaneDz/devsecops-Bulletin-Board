@@ -5,7 +5,7 @@ Feature: nmap attacks for example.com
     And the following profile:
       | name           | value           |
       | hostname       | 34.239.201.78 |
-      | tcp_ping_ports | 22,25,80,443    |
+      | tcp_ping_ports | 25,80,443    |
 
   Scenario: Using tcp syn ping scan and the nmap fast flag
     When I launch an "nmap" attack with:
@@ -15,4 +15,4 @@ Feature: nmap attacks for example.com
     Then the file "foo.xml" should contain XML:
       | css                                                         |
       | ports port[protocol="tcp"][portid="80"] state[state="open"] |
-      | ports port[protocol="tcp"][portid="22"] state[state="open"] |
+      | ports port[protocol="tcp"][portid="443"] state[state="open"] |
