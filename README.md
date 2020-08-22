@@ -4,7 +4,9 @@
 
 ## Description
 
-This repository is used to demonstrate how to use Jenkinsfile to build pipeline
+This repository is used to demonstrate how to use Jenkinsfile to build pipeline for bulletin-boar app
+
+![Bulletin Board app](img/bulletin-board.jpg)
 
 ### ci-cd-fake-backend-jenkins
 
