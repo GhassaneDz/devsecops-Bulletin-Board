@@ -8,11 +8,13 @@ This repository is used to demonstrate how to use Jenkinsfile to build pipeline 
 
 ![Bulletin Board app](img/bulletin-board.jpg)
 
-### ci-cd-fake-backend-jenkins
+### ci-cd-bulletin-board avec jenkins
 
 chaine d'integration de bulletin-board avec jenkins.
 
-test unitaire code de l'application
+![Workflow](img/workflow.jpg)
+
+test unitaire du code de l'application
 
 test iac (markdown-yaml-docker-compose-playbook)
 
