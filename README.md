@@ -9,6 +9,13 @@ This repository is used to demonstrate how to use Jenkinsfile to build pipeline
 ### ci-cd-fake-backend-jenkins
 
 chaine d'integration de bulletin-board avec jenkins.
-test unitaire et de deploiement
+etape:
+
+test unitaire code de l'application
+test iac (markdown-yaml-docker-compose-playbook)
+scan artefact (clair)
+deploiement
+check de deploiement
+test securité avec gauntl
 utilisation d'une shared library et notification slack
 
