@@ -1,6 +1,6 @@
 # BADGE
 
-[![Build Status](http://ec2-184-73-168-18.compute-1.amazonaws.com/buildStatus/icon?job=bulletin-board-ops-prod)](http://ec2-184-73-168-18.compute-1.amazonaws.com/job/bulletin-board-ops-prod/)
+[![Build Status](http://ec2-184-73-168-18.compute-1.amazonaws.com/buildStatus/icon?job=bulletin-board-ops-preprod)](http://ec2-184-73-168-18.compute-1.amazonaws.com/job/bulletin-board-ops-preprod/)
 
 ## Description
 
