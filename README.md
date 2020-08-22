@@ -9,7 +9,6 @@ This repository is used to demonstrate how to use Jenkinsfile to build pipeline
 ### ci-cd-fake-backend-jenkins
 
 chaine d'integration de bulletin-board avec jenkins.
-etape:
 
 test unitaire code de l'application
 
