@@ -12,6 +12,7 @@ chaine d'integration de bulletin-board avec jenkins.
 etape:
 
 test unitaire code de l'application
+
 test iac (markdown-yaml-docker-compose-playbook)
 scan artefact (clair)
 deploiement
